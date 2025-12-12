@@ -1,11 +1,10 @@
 package testPackage;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -62,7 +61,7 @@ public class SeleniumTests {
     }
 
     @Test
-    public void elementActionsTest(){
+    public void elementActionsTest() {
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("https://www.selenium.dev/selenium/web/web-form.html");
 
@@ -71,13 +70,6 @@ public class SeleniumTests {
         By.id("my-text-id");
         By.cssSelector("#my-text-id");
         By.xpath("//*[@id='my-text-id']");
-        //  /html/body/main/div/form/div/div[1]/label[1]/input -> Absolute xpath
-        // //*[@id="my-text-id"] -> Relative xpath
-
-        //tagName[@attribute='value']
-
-        //*[@attribute='value']
-        //tagName[@attribute='value'][@attribute='value']
 
         By.tagName("input");
         By.name("my-text");
@@ -86,17 +78,43 @@ public class SeleniumTests {
         By.partialLinkText("Return");
 
 
-
-        //  <input type="text" class="form-control" name="my-text" myprop="myvalue">
+        //  <input type="text" class="form-control" name="my-text" myprop="myvalue" id ="my-username-id-12836972315768312541623">
 
         By.cssSelector("input.form-control[name='my-text']");
         By.xpath("//input[@class='form-control'][@name='my-text']");
+
+        By.xpath("//input[contains(@class,'form-')]");
+
         //input[@name='my-text']
         //*[@name='my-text']
 
         //TODO: practice element actions, advanced xpath and element identification, synchronization techniques (table task #7)
 
         driver.findElement(By.id("my-text-id")).click();
+
+        driver.quit();
+    }
+
+    @Test
+    public void workshopTest() {
+        WebDriver driver;
+        driver = new ChromeDriver();
+        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+
+        // 1. WebElement Object => @FindBy
+//        WebElement textInput = driver.findElement(By.xpath("//input[@name='my-text']"));
+//        // javascript workibg in the background StaleElementReferenceException
+//        textInput.click();
+//        textInput.sendKeys("test");
+//
+//        // 2. By locator Object
+//        By textInputLocator = By.name("my-text");
+//        driver.findElement(textInputLocator).click();
+//        driver.findElement(textInputLocator).sendKeys("test");
+//
+//        // 3. No Objects
+//        driver.findElement(By.xpath("//input[@name='my-text']")).click();
+//        driver.findElement(By.xpath("//input[@name='my-text']")).sendKeys("test");
 
         driver.quit();
     }
