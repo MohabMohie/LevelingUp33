@@ -17,9 +17,16 @@
 //tagName[text()='value']
 //tagName[contains(text(),'valuePart')]
 
+//tagName[.='value']
+//tagName[contains(.,'valuePart')]
+
 //tagName[contains(@attribute,'valuePart')]
 //tagName[starts-with(@attribute,'valuePart')]
 //tagName[ends-with(@attribute,'valuePart')]
+
+//tagName[@attribute='value']/childTagName
+//tagName[@attribute='value']//grandChildTagName
+
 
 // ------------------- Xpath AXIS
 

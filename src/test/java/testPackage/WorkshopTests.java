@@ -18,7 +18,7 @@ public class WorkshopTests {
      * Close Google Chrome
      */
     @Test
-    public void workshopTest() {
+    public void checkboxesTask() {
         WebDriver driver;
         // Open Google Chrome
         driver = new ChromeDriver();
