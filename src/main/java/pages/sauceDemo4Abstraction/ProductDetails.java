@@ -1,4 +1,4 @@
-package pages.sauceDemo;
+package pages.sauceDemo4Abstraction;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

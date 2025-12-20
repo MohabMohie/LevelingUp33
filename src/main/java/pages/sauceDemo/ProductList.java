@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 public class ProductList {
     WebDriver driver;
 
+    private By productDescriptionLabel = null;
+    private By productPriceLabel = null;
+    private By productImageSrc = null;
+    private By productLink = null;
+
     public ProductList(WebDriver driver){
         this.driver = driver;
     }
@@ -15,20 +20,20 @@ public class ProductList {
     }
 
     public String getProductDescription(String productName){
-        By productDescriptionLabel = By.xpath("//a[.='"+productName+"']/following-sibling::div");
+        productDescriptionLabel = By.xpath("//a[.='"+productName+"']/following-sibling::div");
         return driver.findElement(productDescriptionLabel).getText();
     }
     public String getProductPrice(String productName){
-        By productPriceLabel = By.xpath("//div[@data-test='inventory-item-description'][contains(.,'"+productName+"')]//div[@data-test='inventory-item-price']");
+        productPriceLabel = By.xpath("//div[@data-test='inventory-item-description'][contains(.,'"+productName+"')]//div[@data-test='inventory-item-price']");
         return driver.findElement(productPriceLabel).getText();
     }
     public String getProductImageSrc(String productName){
-        By productImageSrc = By.xpath("//div[@data-test='inventory-item'][contains(.,'"+productName+"')]//img");
+        productImageSrc = By.xpath("//div[@data-test='inventory-item'][contains(.,'"+productName+"')]//img");
         return driver.findElement(productImageSrc).getDomAttribute("src");
     }
 
     public void openProductDetails(String productName){
-        By productLink = By.xpath("//a[.='" + productName + "']");
+        productLink = By.xpath("//a[.='" + productName + "']");
         driver.findElement(productLink).click();
     }
 }

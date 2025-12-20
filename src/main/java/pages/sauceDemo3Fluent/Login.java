@@ -1,7 +1,8 @@
-package pages.sauceDemo;
+package pages.sauceDemo3Fluent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class Login {
 
@@ -19,18 +20,20 @@ public class Login {
         this.driver = driver;
     }
 
-    public void navigateToLoginPage() {
+    public Login navigateToLoginPage() {
         driver.navigate().to(url);
+        return this;
     }
 
-    public void login(String username, String password) {
+    public ProductList login(String username, String password) {
         driver.findElement(usernameInput).sendKeys(username);
         driver.findElement(passwordInput).sendKeys(password);
         driver.findElement(loginButton).click();
+        return new ProductList(driver);
     }
 
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
+    public void assertCurrentUrl() {
+        Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
 }
